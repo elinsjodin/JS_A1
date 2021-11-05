@@ -1,0 +1,63 @@
+html,
+body {
+  height: 100vh;
+  margin: 0 auto;
+}
+body {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+}
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #f3e8f6;
+  .box {
+    height: 650px;
+    width: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .heading {
+      position: relative;
+      h1 {
+        color: black;
+      }
+    }
+    hr {
+      width: 85%;
+      border-top: 1px solid black;
+      margin-bottom: 20px;
+    }
+    .taskdiv {
+      ul {
+        text-align: center;
+      }
+      li {
+        background-color: #f3e8f6;
+        list-style: none;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        width: 80%;
+        padding: 20px;
+      }
+    }
+    .buttons {
+      .buttonuncheck {
+        margin-left: 50px;
+      }
+      .buttoncheck,
+      .buttonuncheck {
+        background-color: #c4c4c452;
+        border: none;
+        border-radius: 5px;
+        height: 25px;
+        width: 30px;
+      }
+    }
+  }
+}
