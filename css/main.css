@@ -16,7 +16,7 @@ body {
   background-color: #f3e8f6; }
   #container .box {
     height: 650px;
-    width: 50%;
+    width: 60%;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -30,21 +30,33 @@ body {
       width: 85%;
       border-top: 1px solid black;
       margin-bottom: 20px; }
-    #container .box .taskdiv ul {
-      text-align: center; }
-    #container .box .taskdiv li {
-      background-color: #f3e8f6;
-      list-style: none;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      width: 80%;
-      padding: 20px; }
-    #container .box .buttons .buttonuncheck {
-      margin-left: 50px; }
-    #container .box .buttons .buttoncheck,
-    #container .box .buttons .buttonuncheck {
-      background-color: #c4c4c452;
-      border: none;
-      border-radius: 5px;
-      height: 25px;
-      width: 30px; }
+    #container .box .taskdiv {
+      display: flex;
+      width: 40rem; }
+      #container .box .taskdiv ul {
+        text-align: center;
+        width: 87%; }
+      #container .box .taskdiv li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #f3e8f6;
+        list-style: none;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        padding: 20px; }
+      #container .box .taskdiv .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 50px; }
+        #container .box .taskdiv .buttons .buttoncheck,
+        #container .box .taskdiv .buttons .buttonuncheck {
+          background-color: #c4c4c452;
+          border: 1px solid black;
+          border-radius: 5px;
+          height: 25px;
+          width: 30px; }
+        #container .box .taskdiv .buttons .buttoncheck:hover,
+        #container .box .taskdiv .buttons .buttonuncheck:hover {
+          cursor: pointer;
+          background-color: #d8a2e7; }

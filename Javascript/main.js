@@ -1,6 +1,24 @@
+class Todo {
+  constructor() {
+    this.task = "";
+  }
+}
 window.onload = function () {
   start();
 };
+
+// function x(e) {
+//   e.parentNode.querySelector("li").innerHTML = ""
+//   e.parentNode.remove();
+// }
+
+// Object.namn.värde
+
+// variabel
+
+// function createHTML()
+//function
+// Todo.push
 
 function start() {
   let container = document.createElement("div");
@@ -26,38 +44,48 @@ function start() {
   taskdiv.className = "taskdiv";
   box.appendChild(taskdiv);
 
-  let tasks = [
-    "Meditation in Headspace",
-    "Workout at the gym",
-    "Do Javascript assignment for school",
-    "Go for a walk",
-    "Make dinner",
-  ];
+  let t1 = new Todo();
+  t1.task = "Meditation in Headspace";
+
+  let t2 = new Todo();
+  t2.task = "Workout at the gym";
+
+  let t3 = new Todo();
+  t3.task = "Do Javascript assignment for school";
+
+  let t4 = new Todo();
+  t4.task = "Go for a walk";
+
+  let t5 = new Todo();
+  t5.task = "Make dinner";
+
   let ul = document.createElement("ul");
+
+  let tasks = [t1, t2, t3, t4, t5];
 
   for (let i = 0; i < tasks.length; i++) {
     let li = document.createElement("li");
-    li.innerHTML = tasks[i];
+    li.innerHTML += tasks[i].task;
     ul.appendChild(li);
+
+    let buttons = document.createElement("div");
+    buttons.className = "buttons";
+    li.appendChild(buttons);
+
+    let buttoncheck = document.createElement("button");
+    buttoncheck.className = "buttoncheck";
+    buttoncheck.addEventListener("click", handleClick);
+
+    let buttonuncheck = document.createElement("button");
+    buttonuncheck.className = "buttonuncheck";
+    buttonuncheck.addEventListener("click", handleClick);
+
+    buttons.appendChild(buttoncheck);
+    buttons.appendChild(buttonuncheck);
   }
   taskdiv.appendChild(ul);
-
-  let buttons = document.createElement("div");
-  buttons.className = "buttons";
-  box.appendChild(buttons);
-
-  let buttoncheck = document.createElement("button");
-  buttoncheck.className = "buttoncheck";
-  buttoncheck.addEventListener("click", handleClick);
-
-  let buttonuncheck = document.createElement("button");
-  buttonuncheck.className = "buttonuncheck";
-  buttonuncheck.addEventListener("click", handleClick);
-
-  buttons.appendChild(buttoncheck);
-  buttons.appendChild(buttonuncheck);
-
+}
+function handleClick() {
   // buttoncheck.innerHTML = "Compleated";
   // buttonuncheck.innerHTML = "Not Compleated";
 }
-function handleClick() {}

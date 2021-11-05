@@ -16,7 +16,7 @@ body {
   background-color: #f3e8f6;
   .box {
     height: 650px;
-    width: 50%;
+    width: 60%;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -34,29 +34,39 @@ body {
       margin-bottom: 20px;
     }
     .taskdiv {
+      display: flex;
+      width: 40rem;
       ul {
         text-align: center;
+        width: 87%;
       }
       li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         background-color: #f3e8f6;
         list-style: none;
         margin-bottom: 20px;
         border-radius: 5px;
-        width: 80%;
         padding: 20px;
       }
-    }
-    .buttons {
-      .buttonuncheck {
-        margin-left: 50px;
-      }
-      .buttoncheck,
-      .buttonuncheck {
-        background-color: #c4c4c452;
-        border: none;
-        border-radius: 5px;
-        height: 25px;
-        width: 30px;
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        .buttoncheck,
+        .buttonuncheck {
+          background-color: #c4c4c452;
+          border: 1px solid black;
+          border-radius: 5px;
+          height: 25px;
+          width: 30px;
+        }
+        .buttoncheck:hover,
+        .buttonuncheck:hover {
+          cursor: pointer;
+          background-color: #d8a2e7;
+        }
       }
     }
   }
