@@ -14,49 +14,69 @@ body {
   height: 100%;
   width: 100%;
   background-color: #f3e8f6; }
-  #container .box {
-    height: 650px;
-    width: 60%;
-    background-color: white;
+
+.box {
+  height: 650px;
+  width: 60%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .box .heading {
+    position: relative; }
+    .box .heading h1 {
+      font-size: 2.5rem;
+      color: black; }
+  .box .lines {
+    width: 70%;
+    height: 15px;
+    position: relative;
+    margin-bottom: 15px; }
+  .box .lines::after,
+  .box .lines::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    height: 2px;
+    background-color: black;
+    width: 47%;
+    top: 47%; }
+  .box .lines::after {
+    left: 0; }
+  .box .lines::before {
+    right: 0; }
+  .box .diamond {
+    height: 8px;
+    width: 8px;
+    border: 2px solid black;
+    margin: auto;
+    transform: rotate(45deg); }
+  .box .taskdiv {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; }
-    #container .box .heading {
-      position: relative; }
-      #container .box .heading h1 {
-        color: black; }
-    #container .box hr {
-      width: 85%;
-      border-top: 1px solid black;
-      margin-bottom: 20px; }
-    #container .box .taskdiv {
+    width: 40rem; }
+    .box .taskdiv ul {
+      text-align: center;
+      width: 87%; }
+    .box .taskdiv li {
       display: flex;
-      width: 40rem; }
-      #container .box .taskdiv ul {
-        text-align: center;
-        width: 87%; }
-      #container .box .taskdiv li {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        background-color: #f3e8f6;
-        list-style: none;
-        margin-bottom: 20px;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #f3e8f6;
+      list-style: none;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      padding: 20px; }
+    .box .taskdiv .buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 50px; }
+      .box .taskdiv .buttons .buttoncheck {
+        background-color: #c4c4c452;
+        border: 1px solid black;
         border-radius: 5px;
-        padding: 20px; }
-      #container .box .taskdiv .buttons {
-        display: flex;
-        flex-direction: row;
-        gap: 50px; }
-        #container .box .taskdiv .buttons .buttoncheck,
-        #container .box .taskdiv .buttons .buttonuncheck {
-          background-color: #c4c4c452;
-          border: 1px solid black;
-          border-radius: 5px;
-          height: 25px;
-          width: 30px; }
-        #container .box .taskdiv .buttons .buttoncheck:hover,
-        #container .box .taskdiv .buttons .buttonuncheck:hover {
-          cursor: pointer;
-          background-color: #d8a2e7; }
+        height: 25px; }
+      .box .taskdiv .buttons .buttoncheck:hover {
+        cursor: pointer;
+        background-color: #a05bb380;
+        font-style: italic; }

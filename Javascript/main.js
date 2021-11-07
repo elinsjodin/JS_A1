@@ -37,8 +37,15 @@ function start() {
   h1.innerHTML = "2 Do List";
   heading.appendChild(h1);
 
-  let hr = document.createElement("hr");
-  box.appendChild(hr);
+  let lines = document.createElement("div");
+  lines.className = "lines";
+  box.appendChild(lines);
+
+  let diamond = document.createElement("div");
+  diamond.className = "diamond";
+  lines.appendChild(diamond);
+  // let hr = document.createElement("hr");
+  // box.appendChild(hr);
 
   let taskdiv = document.createElement("div");
   taskdiv.className = "taskdiv";
@@ -74,18 +81,14 @@ function start() {
 
     let buttoncheck = document.createElement("button");
     buttoncheck.className = "buttoncheck";
+    buttoncheck.innerText = "Done";
     buttoncheck.addEventListener("click", handleClick);
 
-    let buttonuncheck = document.createElement("button");
-    buttonuncheck.className = "buttonuncheck";
-    buttonuncheck.addEventListener("click", handleClick);
-
     buttons.appendChild(buttoncheck);
-    buttons.appendChild(buttonuncheck);
   }
   taskdiv.appendChild(ul);
 }
+
 function handleClick() {
-  // buttoncheck.innerHTML = "Compleated";
-  // buttonuncheck.innerHTML = "Not Compleated";
+  //Mark as done
 }
