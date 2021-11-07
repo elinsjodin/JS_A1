@@ -41,7 +41,8 @@ body {
     height: 2px;
     background-color: black;
     width: 47%;
-    top: 47%; }
+    top: 47%;
+    animation: line 1.2s ease-in; }
   .box .lines::after {
     left: 0; }
   .box .lines::before {
@@ -52,6 +53,16 @@ body {
     border: 2px solid black;
     margin: auto;
     transform: rotate(45deg); }
+
+@keyframes line {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0; }
+  50% {
+    transform: translateX(0%);
+    opacity: 1; }
+  0% {
+    left: 53%; } }
   .box .taskdiv {
     display: flex;
     width: 40rem; }
