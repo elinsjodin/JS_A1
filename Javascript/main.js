@@ -1,26 +1,16 @@
+// Object Class
 class Todo {
   constructor() {
     this.task = "";
   }
 }
+// Function when page loads
 window.onload = function () {
   start();
 };
 
-// function x(e) {
-//   e.parentNode.querySelector("li").innerHTML = ""
-//   e.parentNode.remove();
-// }
-
-// Object.namn.värde
-
-// variabel
-
-// function createHTML()
-//function
-// Todo.push
-
 function start() {
+  // Selectors
   let container = document.createElement("div");
   container.id = "container";
   document.body.appendChild(container);
@@ -44,12 +34,25 @@ function start() {
   let diamond = document.createElement("div");
   diamond.className = "diamond";
   lines.appendChild(diamond);
-  // let hr = document.createElement("hr");
-  // box.appendChild(hr);
 
   let taskdiv = document.createElement("div");
   taskdiv.className = "taskdiv";
   box.appendChild(taskdiv);
+
+  let form = document.createElement("form");
+  form.id = "form";
+  taskdiv.appendChild(form);
+
+  let input = document.createElement("input");
+  this.type = Text;
+  input.className = "todoinput";
+  form.appendChild(input);
+
+  let inputbutton = document.createElement("button");
+  inputbutton.className = "add";
+  inputbutton.innerHTML = "+";
+  inputbutton.addEventListener("click", addTask);
+  form.appendChild(inputbutton);
 
   let t1 = new Todo();
   t1.task = "Meditation in Headspace";
@@ -79,16 +82,40 @@ function start() {
     buttons.className = "buttons";
     li.appendChild(buttons);
 
-    let buttoncheck = document.createElement("button");
-    buttoncheck.className = "buttoncheck";
-    buttoncheck.innerText = "Done";
-    buttoncheck.addEventListener("click", handleClick);
+    let checkbtn = document.createElement("button");
+    checkbtn.className = "checkbtn";
+    checkbtn.innerHTML = "&#10003;";
 
-    buttons.appendChild(buttoncheck);
+    let deletebtn = document.createElement("button");
+    deletebtn.className = "deletebtn";
+    deletebtn.innerHTML = '<i class="fa fa-trash-o"></i>';
+
+    buttons.appendChild(checkbtn);
+    buttons.appendChild(deletebtn);
   }
   taskdiv.appendChild(ul);
 }
+// Event Listeners
+buttoncheck.addEventListener("click", addTask);
 
-function handleClick() {
-  //Mark as done
+// Functions
+function addTask(event) {
+  event.preventDefault();
 }
+
+function deleteTask() {}
+
+//Mark as done
+
+// function x(e) {
+//   e.parentNode.querySelector("li").innerHTML = ""
+//   e.parentNode.remove();
+// }
+
+// Object.namn.värde
+
+// variabel
+
+// function createHTML()
+//function
+// Todo.push

@@ -2,7 +2,7 @@
 
 body {
   height: 100vh;
-  background-color: $lilac;
+  background-image: linear-gradient(120deg, $lilac, $darklilac);
   font-family: "Roboto", sans-serif;
   margin: 0px;
   padding: 0px;
@@ -19,6 +19,7 @@ body {
   height: 500px;
   width: 80%;
   background-color: $white;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +62,7 @@ body {
     top: 47%;
     animation: line 1.2s ease-in;
     @include desktop {
-      height: 1.5px;
+      height: 2px;
     }
   }
   .lines::after {
@@ -71,14 +72,14 @@ body {
     right: 0;
   }
   .diamond {
-    height: 4px;
-    width: 4px;
+    height: 5px;
+    width: 5px;
     border: 0.7px solid $black;
     margin: auto;
     transform: rotate(45deg);
     @include desktop {
-      height: 8px;
-      width: 8px;
+      height: 10px;
+      width: 10px;
       border: 2px solid $black;
     }
   }
@@ -97,18 +98,54 @@ body {
   }
   .taskdiv {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    #form {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 10px;
+      .todoinput {
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: solid;
+        width: 70%;
+        @include desktop {
+          width: 100%;
+        }
+      }
+      .todoinput:focus {
+        outline: none;
+      }
+      .add {
+        border: none;
+        background-color: $white;
+        font-size: 0.6rem;
+        border-radius: 5px;
+        height: 15px;
+        @include tablet {
+          font-size: 1rem;
+          height: 20px;
+        }
+      }
+      .add:hover {
+        cursor: pointer;
+        background-image: linear-gradient(120deg, $lilac, $darklilac);
+        font-style: italic;
+      }
+    }
     ul {
       display: flex;
       flex-direction: column;
-      text-align: center;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
       padding-inline-start: 0;
       min-height: 50%;
       min-width: 70%;
+      transition: all 0.5s ease;
       @include desktop {
         min-width: 90%;
       }
@@ -117,13 +154,14 @@ body {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      flex: 1;
       gap: 20px;
-      background-color: $lilac;
+      background-image: linear-gradient(120deg, $lilac, $darklilac);
       list-style: none;
       border-radius: 5px;
       padding: 10px;
       width: 70%;
-      font-size: 0.8em;
+      font-size: 0.6em;
       @include tablet {
         font-size: 1em;
         padding: 20px;
@@ -133,22 +171,37 @@ body {
       }
     }
     .buttons {
-      .buttoncheck {
-        background-color: $grey;
-        border: 1px solid $black;
-        border-radius: 5px;
-        height: 15px;
-        font-size: 0.5em;
+      display: flex;
+      justify-content: space-between;
+      gap: 5px;
+      .checkbtn,
+      .deletebtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        background: $grey;
+        color: $black;
+        border: none;
+        font-size: 0.3rem;
+        max-height: 0.5rem;
+        max-width: 0.7rem;
         @include tablet {
-          height: 20px;
+          min-height: 1.3rem;
+          min-width: 1.3rem;
           font-size: 0.7rem;
         }
       }
-      .buttoncheck:hover {
+      .checkbtn:hover,
+      .deletebtn:hover {
         cursor: pointer;
-        background-color: $darklilac;
-        font-style: italic;
+        background-color: $white;
+        border: none;
       }
+    }
+    .compleated {
+      text-decoration: line-through;
+      opacity: 0;
     }
   }
 }
