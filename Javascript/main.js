@@ -1,16 +1,39 @@
-// Object Class
 class Todo {
   constructor() {
-    this.task = "";
+    this.task = [];
+    this.isFinished = false;
   }
 }
-// Function when page loads
+
 window.onload = function () {
   start();
 };
 
+let t1 = new Todo();
+t1.task = "Meditation in Headspace";
+
+let t2 = new Todo();
+t2.task = "Workout at the gym";
+
+let t3 = new Todo();
+t3.task = "Do Javascript assignment for school";
+
+let t4 = new Todo();
+t4.task = "Go for a walk";
+
+let t5 = new Todo();
+t5.task = "Make dinner";
+
+let LOCAL_STORAGE_LIST_KEY = "task.items";
+let tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [
+  t1,
+  t2,
+  t3,
+  t4,
+  t5,
+];
+
 function start() {
-  // Selectors
   let container = document.createElement("div");
   container.id = "container";
   document.body.appendChild(container);
@@ -46,6 +69,7 @@ function start() {
   let input = document.createElement("input");
   this.type = Text;
   input.className = "todoinput";
+  input.id = "todoinput";
   form.appendChild(input);
 
   let inputbutton = document.createElement("button");
@@ -54,28 +78,32 @@ function start() {
   inputbutton.addEventListener("click", addTask);
   form.appendChild(inputbutton);
 
-  let t1 = new Todo();
-  t1.task = "Meditation in Headspace";
-
-  let t2 = new Todo();
-  t2.task = "Workout at the gym";
-
-  let t3 = new Todo();
-  t3.task = "Do Javascript assignment for school";
-
-  let t4 = new Todo();
-  t4.task = "Go for a walk";
-
-  let t5 = new Todo();
-  t5.task = "Make dinner";
-
   let ul = document.createElement("ul");
+  ul.id = "theMainList";
+  // ul.addEventListener("click", deleteTask);
+  taskdiv.appendChild(ul);
 
-  let tasks = [t1, t2, t3, t4, t5];
+  render();
+}
+function saveAndRender() {
+  save();
+  render();
+}
+
+function save() {
+  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(taskitems));
+}
+
+function render() {
+  let ul = document.getElementById("theMainList");
+  ul.innerHTML = "";
 
   for (let i = 0; i < tasks.length; i++) {
     let li = document.createElement("li");
     li.innerHTML += tasks[i].task;
+    if (tasks[i].isFinished) {
+      li.className = "completed";
+    }
     ul.appendChild(li);
 
     let buttons = document.createElement("div");
@@ -88,24 +116,60 @@ function start() {
 
     let deletebtn = document.createElement("button");
     deletebtn.className = "deletebtn";
-    deletebtn.innerHTML = '<i class="fa fa-trash-o"></i>';
+    deletebtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+
+    checkbtn.addEventListener("click", () => done(i));
+
+    deletebtn.addEventListener("click", () => deleteTask(i));
 
     buttons.appendChild(checkbtn);
     buttons.appendChild(deletebtn);
   }
-  taskdiv.appendChild(ul);
 }
-// Event Listeners
-buttoncheck.addEventListener("click", addTask);
 
-// Functions
 function addTask(event) {
   event.preventDefault();
+
+  let inputTag = document.getElementById("todoinput");
+
+  let inputText = inputTag.value;
+  //saveLocalTodos(todoinput.value);
+  let theNewTodo = new Todo();
+  theNewTodo.task = inputText;
+
+  tasks.push(theNewTodo);
+  inputTag.value = "";
+  render();
 }
 
-function deleteTask() {}
+function done(i) {
+  tasks[i].isFinished = !tasks[i].isFinished;
 
+  render();
+}
+
+function deleteTask(i) {
+  tasks.splice(i, 1);
+  render();
+}
+
+//1. Ta reda på vilket objekt som skall tas bort
+//2. Använd splice på tasks för att ta bort
+//3. Uppdatera html (render)
+
+// function savetoLS(task) {
+//   let todos;
+//   if (localStorage.getItem("todos") === null) {
+//     todos = [];
+//   } else {
+//     todos = JSON.parse(localStorage.getItem("todos"));
+//   }
+//   tasks.push(task);
+//   localStorage.setItem("todos", JSON.stringify(todos));
+// }
 //Mark as done
+
+//if bolean is true
 
 // function x(e) {
 //   e.parentNode.querySelector("li").innerHTML = ""
@@ -116,6 +180,14 @@ function deleteTask() {}
 
 // variabel
 
-// function createHTML()
-//function
-// Todo.push
+// function createHTML(){
+//...
+// }
+//function addToList(){
+//new todo
+//todos.push
+//createHTML()
+//}
+
+//  let todoDiv = document.createElement("div");
+// todoDiv.classList.add("todo");

@@ -16,21 +16,16 @@ body {
   align-items: center;
 }
 .box {
-  height: 500px;
-  width: 80%;
   background-color: $white;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
   @include tablet {
-    height: 650px;
-    width: 60%;
     font-size: 1.5em;
-  }
-  @include desktop {
-    max-width: 60%;
+    padding: 60px;
   }
   .heading {
     position: relative;
@@ -43,12 +38,13 @@ body {
     }
   }
   .lines {
-    width: 70%;
+    min-width: 90%;
     height: 7px;
     position: relative;
     @include desktop {
       height: 15px;
       margin-bottom: 15px;
+      min-width: 100%;
     }
   }
   .lines::after,
@@ -61,7 +57,7 @@ body {
     width: 47%;
     top: 47%;
     animation: line 1.2s ease-in;
-    @include desktop {
+    @include tablet {
       height: 2px;
     }
   }
@@ -77,10 +73,14 @@ body {
     border: 0.7px solid $black;
     margin: auto;
     transform: rotate(45deg);
+    @include tablet {
+      height: 6px;
+      width: 6px;
+      border: 2px solid $black;
+    }
     @include desktop {
       height: 10px;
       width: 10px;
-      border: 2px solid $black;
     }
   }
   @keyframes line {
@@ -111,7 +111,7 @@ body {
         border-right-style: hidden;
         border-left-style: hidden;
         border-bottom-style: solid;
-        width: 70%;
+        min-width: 80%;
         @include desktop {
           width: 100%;
         }
@@ -120,13 +120,19 @@ body {
         outline: none;
       }
       .add {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border: none;
         background-color: $white;
         font-size: 0.6rem;
-        border-radius: 5px;
-        height: 15px;
+        border-radius: 2px;
+        height: 10px;
+        width: 10px;
+        margin-left: 5px;
         @include tablet {
           font-size: 1rem;
+          width: 20px;
           height: 20px;
         }
       }
@@ -154,20 +160,21 @@ body {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      flex-wrap: wrap;
+      min-width: 80%;
+      max-width: 80%;
+      flex-basis: 100%;
       flex: 1;
       gap: 20px;
       background-image: linear-gradient(120deg, $lilac, $darklilac);
       list-style: none;
       border-radius: 5px;
       padding: 10px;
-      width: 70%;
-      font-size: 0.6em;
+      font-size: 0.7rem;
       @include tablet {
         font-size: 1em;
         padding: 20px;
-      }
-      @include desktop {
-        width: 90%;
+        min-width: 90%;
       }
     }
     .buttons {
@@ -179,11 +186,12 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 5px;
+        padding: 7px;
         background: $grey;
         color: $black;
         border: none;
-        font-size: 0.3rem;
+        border-radius: 2px;
+        font-size: 0.6rem;
         max-height: 0.5rem;
         max-width: 0.7rem;
         @include tablet {
@@ -199,9 +207,9 @@ body {
         border: none;
       }
     }
-    .compleated {
+    .completed {
       text-decoration: line-through;
-      opacity: 0;
+      opacity: 0.5;
     }
   }
 }
