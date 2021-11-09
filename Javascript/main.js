@@ -101,10 +101,15 @@ function render() {
 
   for (let i = 0; i < tasks.length; i++) {
     let li = document.createElement("li");
-    li.innerHTML += tasks[i].task;
+    let litext = tasks[i].task;
     if (tasks[i].isFinished) {
       li.className = "completed";
     }
+
+    let span = document.createElement("span");
+    span.innerHTML = litext;
+    li.appendChild(span);
+
     ul.appendChild(li);
 
     let buttons = document.createElement("div");

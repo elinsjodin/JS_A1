@@ -177,10 +177,13 @@ body {
         min-width: 90%;
       }
     }
+    span {
+      width: 60%;
+    }
     .buttons {
       display: flex;
       justify-content: space-between;
-      gap: 5px;
+      width: 15%;
       .checkbtn,
       .deletebtn {
         display: flex;

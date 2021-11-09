@@ -159,10 +159,12 @@ body {
           font-size: 1em;
           padding: 20px;
           min-width: 90%; } }
+    .box .taskdiv span {
+      width: 60%; }
     .box .taskdiv .buttons {
       display: flex;
       justify-content: space-between;
-      gap: 5px; }
+      width: 15%; }
       .box .taskdiv .buttons .checkbtn,
       .box .taskdiv .buttons .deletebtn {
         display: flex;
