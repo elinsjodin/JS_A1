@@ -1,6 +1,6 @@
 class Todo {
   constructor() {
-    this.task = [];
+    this.task = "";
     this.isFinished = false;
   }
 }
@@ -32,6 +32,8 @@ let tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [
   t4,
   t5,
 ];
+
+console.log(tasks);
 
 function start() {
   let container = document.createElement("div");
@@ -80,10 +82,9 @@ function start() {
 
   let ul = document.createElement("ul");
   ul.id = "theMainList";
-  // ul.addEventListener("click", deleteTask);
   taskdiv.appendChild(ul);
 
-  render();
+  saveAndRender();
 }
 function saveAndRender() {
   save();
@@ -91,7 +92,7 @@ function saveAndRender() {
 }
 
 function save() {
-  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(taskitems));
+  localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(tasks));
 }
 
 function render() {
@@ -133,61 +134,21 @@ function addTask(event) {
   let inputTag = document.getElementById("todoinput");
 
   let inputText = inputTag.value;
-  //saveLocalTodos(todoinput.value);
   let theNewTodo = new Todo();
   theNewTodo.task = inputText;
 
   tasks.push(theNewTodo);
   inputTag.value = "";
-  render();
+  saveAndRender();
 }
 
 function done(i) {
   tasks[i].isFinished = !tasks[i].isFinished;
 
-  render();
+  saveAndRender();
 }
 
 function deleteTask(i) {
   tasks.splice(i, 1);
-  render();
+  saveAndRender();
 }
-
-//1. Ta reda på vilket objekt som skall tas bort
-//2. Använd splice på tasks för att ta bort
-//3. Uppdatera html (render)
-
-// function savetoLS(task) {
-//   let todos;
-//   if (localStorage.getItem("todos") === null) {
-//     todos = [];
-//   } else {
-//     todos = JSON.parse(localStorage.getItem("todos"));
-//   }
-//   tasks.push(task);
-//   localStorage.setItem("todos", JSON.stringify(todos));
-// }
-//Mark as done
-
-//if bolean is true
-
-// function x(e) {
-//   e.parentNode.querySelector("li").innerHTML = ""
-//   e.parentNode.remove();
-// }
-
-// Object.namn.värde
-
-// variabel
-
-// function createHTML(){
-//...
-// }
-//function addToList(){
-//new todo
-//todos.push
-//createHTML()
-//}
-
-//  let todoDiv = document.createElement("div");
-// todoDiv.classList.add("todo");
