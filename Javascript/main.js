@@ -33,7 +33,20 @@ let tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [
   t5,
 ];
 
-console.log(tasks);
+function sortTodo() {
+  tasks = tasks.sort(function (a, b) {
+    let x = a.task.toLowerCase();
+    let y = b.task.toLowerCase();
+    if (x < y) {
+      return -1;
+    }
+    if (x > y) {
+      return 1;
+    }
+    return 0;
+  });
+  saveAndRender();
+}
 
 function start() {
   let container = document.createElement("div");
@@ -83,6 +96,12 @@ function start() {
   let ul = document.createElement("ul");
   ul.id = "theMainList";
   taskdiv.appendChild(ul);
+
+  let sortbutton = document.createElement("button");
+  sortbutton.id = "sort";
+  sortbutton.innerHTML = '<i class="fas fa-sort-alpha-down"></i>';
+  sortbutton.addEventListener("click", sortTodo);
+  form.appendChild(sortbutton);
 
   saveAndRender();
 }
@@ -144,6 +163,7 @@ function addTask(event) {
 
   tasks.push(theNewTodo);
   inputTag.value = "";
+
   saveAndRender();
 }
 
@@ -155,5 +175,6 @@ function done(i) {
 
 function deleteTask(i) {
   tasks.splice(i, 1);
+
   saveAndRender();
 }
