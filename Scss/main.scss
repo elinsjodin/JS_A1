@@ -117,7 +117,7 @@ body {
         border-left-style: hidden;
         border-bottom-style: solid;
         min-width: 50%;
-        @include desktop {
+        @include tablet {
           width: 100%;
         }
       }

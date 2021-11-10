@@ -106,7 +106,7 @@ body {
         border-left-style: hidden;
         border-bottom-style: solid;
         min-width: 50%; }
-        @media (min-width: 992px) {
+        @media (min-width: 768px) {
           .box .taskdiv #form .todoinput {
             width: 100%; } }
       .box .taskdiv #form .todoinput:focus {
