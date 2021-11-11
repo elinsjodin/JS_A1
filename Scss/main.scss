@@ -1,8 +1,228 @@
-html,
-body {
-  background-color: #f3e8f6;
-}
+@import "mixins";
 
+body {
+  height: 100vh;
+  background-image: linear-gradient(120deg, $lilac, $darklilac);
+  font-family: "Roboto", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  font-size: 12px;
+}
 #container {
-  background-color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  background-color: $white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  @include tablet {
+    font-size: 1.5em;
+    padding: 60px;
+  }
+  .heading {
+    position: relative;
+    h1 {
+      color: $black;
+      font-size: 1.5rem;
+      @include tablet {
+        font-size: 2.5rem;
+      }
+    }
+  }
+  .lines {
+    min-width: 90%;
+    height: 7px;
+    position: relative;
+    @include tablet {
+      min-width: 110%;
+    }
+    @include desktop {
+      height: 14px;
+      margin-bottom: 14px;
+    }
+  }
+  .lines::after,
+  .lines::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    height: 0.7px;
+    background-color: $black;
+    width: 47%;
+    top: 47%;
+    animation: line 1.2s ease-in;
+    @include tablet {
+      height: 2px;
+    }
+  }
+  .lines::after {
+    left: 0;
+  }
+  .lines::before {
+    right: 0;
+  }
+  .diamond {
+    height: 5px;
+    width: 5px;
+    border: 0.7px solid $black;
+    margin: auto;
+    transform: rotate(45deg);
+    @include tablet {
+      height: 6px;
+      width: 6px;
+      border: 2px solid $black;
+    }
+    @include desktop {
+      height: 10px;
+      width: 10px;
+    }
+  }
+  @keyframes line {
+    0% {
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+    0% {
+      left: 53%;
+    }
+  }
+  .taskdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    #form {
+      display: flex;
+      justify-content: center;
+      width: 90%;
+      margin-top: 10px;
+      @include tablet {
+        width: 100%;
+      }
+      .todoinput {
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: solid;
+        min-width: 50%;
+        @include tablet {
+          width: 100%;
+        }
+      }
+      .todoinput:focus {
+        outline: none;
+      }
+      .add,
+      #sort {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: $white;
+        font-size: 0.8rem;
+        border-radius: 2px;
+        height: 10px;
+        width: 10px;
+        margin-left: 5px;
+        @include tablet {
+          font-size: 1.1rem;
+          width: 20px;
+          height: 20px;
+        }
+      }
+      .add:hover,
+      #sort:hover {
+        cursor: pointer;
+        background-image: linear-gradient(120deg, $lilac, $darklilac);
+        font-style: italic;
+      }
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-inline-start: 0;
+      min-height: 50%;
+      min-width: 70%;
+      @include desktop {
+        min-width: 90%;
+      }
+    }
+    li {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      min-width: 80%;
+      max-width: 80%;
+      flex-basis: 100%;
+      flex: 1;
+      background-image: linear-gradient(120deg, $lilac, $darklilac);
+      color: $black;
+      list-style: none;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 0.7rem;
+      @include tablet {
+        font-size: 1em;
+        padding: 20px;
+        min-width: 90%;
+      }
+    }
+    span {
+      width: 70%;
+    }
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 5px;
+      width: 30%;
+      .checkbtn,
+      .deletebtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 7px;
+        background: $grey;
+        color: $black;
+        border: none;
+        border-radius: 2px;
+        font-size: 0.6rem;
+        max-height: 0.5rem;
+        max-width: 0.7rem;
+        @include tablet {
+          min-height: 1.3rem;
+          min-width: 1.3rem;
+          font-size: 0.7rem;
+        }
+      }
+      .checkbtn:hover,
+      .deletebtn:hover {
+        cursor: pointer;
+        background-color: $white;
+        border: none;
+      }
+    }
+    .completed {
+      opacity: 0.5;
+    }
+    .completed span {
+      text-decoration: line-through;
+    }
+  }
 }
